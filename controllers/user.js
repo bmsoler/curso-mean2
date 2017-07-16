@@ -5,7 +5,7 @@ var User = require('../models/user');
 var mongoose = require('mongoose');
 var jwt = require('../services/jwt');
 
-/*  
+/*
 *
 */
 function pruebas(req, res){
