@@ -5,7 +5,7 @@ var User = require('../models/user');
 var mongoose = require('mongoose');
 var jwt = require('../services/jwt');
 
-/* 
+/*  
 *
 */
 function pruebas(req, res){
@@ -32,7 +32,7 @@ function saveUser(req, res){
 		bcrypt.hash(params.password, null, null, function(err, has){
 				user.password = has;
 				if (user.name && user.surname && user.email){
-					//Guardar el usuario					
+					//Guardar el usuario
 					user.save((err, userStored) => {
 						if (err){
 							res.status(500).send({message:'Error al guardar el usuario'});
@@ -79,12 +79,12 @@ function loginUser(req, res){
 							});
 						}else {
 							res.status(200).send({user});
-						}						
+						}
 					}else {
 						res.status(404).send({message:'El usuario no ha podido loguearse'});
 					}
 				});
-			}			
+			}
 		}
 	});
 }
@@ -140,7 +140,7 @@ function uploadImage(req, res){
 					}
 				}
 			});
-			
+
 		}else{
 			res.status(200).send({ message : 'Extensión del archivo no válida'});
 		}
@@ -158,4 +158,4 @@ module.exports = {
 	loginUser,
 	updateUser,
 	uploadImage
-}; 
+};
