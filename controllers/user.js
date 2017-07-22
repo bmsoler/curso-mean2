@@ -122,8 +122,8 @@ function uploadImage(req, res){
 	var file_name = req.params.file_name;
 
 	if (req.files){
-		var file_path = rep.files.image.path;
-		var file_split = file_path.split('\\');
+		var file_path = req.files.image.path;
+		var file_split = file_path.split('/');
 		var file_name = file_split[2];
 
 		var ext_split = file_name.split('\.');
@@ -147,7 +147,6 @@ function uploadImage(req, res){
 			res.status(200).send({ message : 'Extensión del archivo no válida'});
 		}
 
-		res.status(200).send({ file_name : file_name });
 	}else {
 		res.status(200).send({ message : 'No se ha subido ninguna imagen' });
 	}
