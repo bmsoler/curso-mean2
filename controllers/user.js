@@ -97,7 +97,7 @@ function loginUser(req, res){
 function updateUser(req, res){
 
 	var userId = req.params.id;
-	var update = req.params.body;
+	var update = req.body;
 
 	User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
 		if (err){
