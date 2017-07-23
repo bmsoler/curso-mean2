@@ -8,7 +8,7 @@ Desarrollo del curso de NodeJS + Angular 2
 2. npm start
 
 
-* Comprobar la existencia de la carpeta uploads con los subdirectorios:
-  - artist
+* Comprobar la existencia de la carpeta "uploads" con los subdirectorios:
+  - artists
   - users
   - albums
