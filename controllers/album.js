@@ -143,7 +143,7 @@ function uploadImage(req, res){
 					if (!albumUpdated){
 						res.status(404).send({message:'No se ha podido actualizar el album'});
 					}else {
-						res.status(200).send({albumUpdated});
+						res.status(200).send({album:albumUpdated});
 					}
 				}
 			});
