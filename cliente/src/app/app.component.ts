@@ -12,7 +12,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit{
   public title = 'MUSIFY';
   public user: User;
-  public user_register: User;
+  public user_register: User; 
   public identity; 
   public token; 
   public errorMessage; 

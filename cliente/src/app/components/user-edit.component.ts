@@ -12,19 +12,42 @@ export class UserEditComponent implements OnInit{
   public user: User;
   public identity; 
   public token; 
-  public errorMessage; 
+  public alertMessage; 
 
   constructor (
     private _userService: UserService
   ){
+    this.title = 'Actualizar mis datos';
+    // LocalStorage
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-  	this.user = new User('','','','','','ROLE_USER','');
+    this.user = this.identity;
   }
 
   ngOnInit(){
-    this.title = 'Actualizar mis datos';
+    
   }
 
+  onSubmit(){
+    this._userService.updateUser(this.user).subscribe(
+      response => {
+        if (!response.userUpdated) {
+          this.alertMessage = 'El usuario no se ha actualizado.';
+        }else {
+          this.user = response.userUpdated;
+          localStorage.setItem('identity', JSON.stringify(this.user));
+          this.alertMessage = 'Datos actualizados correctamente.';
+        }
+      },
+      error => {
+        var errorMessage = <any>error;
+        if (errorMessage !== null){
+          var body = JSON.parse(error._body);
+          this.alertMessage = body.message;
+          console.log(errorMessage);
+        }
+      }
+    );
+  }
 
 }
